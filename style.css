@@ -1,0 +1,227 @@
+/* a:active{
+    font-size: 30px;
+    color: red;
+}
+input:focus{
+    border: 2px solid rgb(28, 229, 243);
+    outline: none;
+}
+ul li:nth-child(2n+0){
+    background-color: green;
+}
+p{
+    position: relative;
+    width: 100px;
+}
+p::after{
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: blue;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transition: 3s;
+}
+p::before{
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: blue;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 3s;
+}
+p:hover::before{
+    width: 100%;
+}
+p:hover::after{
+    width: 100%;
+}
+div{
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+div img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    filter: blur(2px);
+}
+div img:hover{
+    scale: 1.03;
+    filter: blur();
+}
+.div1{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+:root{
+    --bello-color:rgb(170, 75, 75);
+}
+a{
+    color: var(--bello-color);
+} */
+/* .prof{
+    height: 400px;
+    width: 400px;
+    background-color: aqua;
+    transition: 1s ease;
+    border-radius: 50%;
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation: bounce 2s infinite alternate;
+    
+} */
+/* @keyframes bounce{
+    0%{transform: scale(0)}
+    100%{transform: scale(1.05)}
+} */
+/* .prof:hover{
+    transform: rotate(180deg);
+    transform: translate(30px);
+    transform: translateY(30px);
+    transform: skew(20deg);
+    transform: scale(1.05);
+    transform: translate3d(20px,100px,20px) rotate(180deg);
+    transform: translateY(90px);
+    transform: translateX(90px);
+} */
+ /* h1{
+    color: red;
+    font-size: 7rem;
+ }
+ section{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(3,20rem);
+    background-color: black;
+    height: 100vh;
+    gap: 1rem
+ } */
+ /* .zoom{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 50%;
+    background: linear-gradient(red,black);
+    animation: zoom 2s infinite alternate;
+ }
+
+ @keyframes zoom{
+    0%,100%{transform: scale(1)}
+    50%{transform: scale(1.05)}
+    from{background: linear-gradient(red,black);}
+    to{background: linear-gradient(white,blue);}
+}
+@keyframes mobile{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+    0%,100%{background: linear-gradient(red,black);}
+    50%{background: linear-gradient(white,blue);}
+}
+ @media screen and (max-width:600px) {
+    h1{
+        color: blue;
+        font-size: 3rem;
+     }
+     section{
+        grid-template-columns: repeat(1,1fr);
+     }
+     .mobile{
+        width: 200px;
+        height: 200px;
+        position: relative;
+        background: linear-gradient(red,black);
+        animation: mobile 2s infinite alternate;
+     }
+ }
+ @media screen and (min-width:601px) and (max-width:800px) {
+    h1{
+        color: black;
+        font-size: 5rem;
+     }
+     section{
+        grid-template-columns: repeat(2,1fr);
+     }
+ } */
+
+ #wrap {
+    width: 500px;
+    height: 200px;
+    background: #000;
+    color: #fff;
+    position: relative;
+    /*overflow: hidden;*/
+}
+
+img {
+    position: absolute;
+    top: 20;
+    left: 0;
+    transition: .5s ease-out;
+    height: 200px;
+    width: 1500px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+#slide1:checked + img {
+    left: 0;
+    transition: .5s ease-out;
+}
+
+#slide2:checked + img {
+    left: -500px;
+    transition: .5s ease-out;
+}
+
+#slide3:checked + img {
+    left: -1500px;
+    transition: .5s ease-out;
+}
+img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity .5s ease-out, transform .5s ease-out;
+    transform: translateX(-100%);
+    /* transform: translateX(-100%) rotate(-720deg); */ /* try this, it's nuts */
+    opacity: 0;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  input:checked + img {
+    transform: scale(1);
+    /* transform: translateX(0) rotate(0); */ /* try this with the commented line above */
+    opacity: 1;
+    z-index: 1;
+  }
+  
+  .controls {
+    position: absolute;
+    bottom: 0; left: 0;
+    z-index: 2;
+  }
+  
+  label {
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    padding: .5em;
+    margin: 0 1em 0 0;
+    display: inline-block;
+    cursor: pointer;
+  }
