@@ -1,0 +1,2 @@
+# JS-class
+learning javascripts
