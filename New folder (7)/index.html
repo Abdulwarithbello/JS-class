@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <p id="demo6"  onclick="myTime()">Current Time</p>
+<button type="button"  onclick="this.innerHTML = Date()">The time is :</button>
+<p id="demo7"></p>
+
+<button onclick="myFunction1()">Sort Alphabetically</button>
+<button onclick="myFunction2()">Sort Numerically</button>
+
+<p id="demo"></p>
+
+<ul>
+  <li>Item One</li>
+  <li>Item Two</li>
+  <li>Item Seven</li>
+  <li class="myClass"> Item Eight <div class="desc">This is item description</div></li>
+</ul>
+
+   <script>
+// CREATING A FUNCTION
+//    var value = prompt("enter a value")
+   function toCelcius(value) {
+    return (5/9) * (value-32)
+   }
+  console.log(toCelcius(77));
+// alert(toCelcius(value)) 
+
+// JAVASCRIPTS OBJECT
+// ADDING VALUES TO OBJECT
+  const person = {firstname: "bello", lastname: "akin", age: 24, skinColor: "black"}
+  const Person = {}
+  Person.lastname = "BELLO";
+  Person.firstname = "AKIN";
+  Person.age = 25;
+  Person.skinColor = "BLACK"
+
+  const PERSON = new Object();
+  PERSON.lastname = "Warith";
+  PERSON.firstname = "Ishola";
+  PERSON.age = 25;
+  PERSON.skinColor = "BLACK"
+
+  console.log(Person);
+  console.log(person);
+  console.log(PERSON);
+  
+//   ACCESSING OBJECT PROPERTIES
+// ONE : objectName.propertyName
+console.log(PERSON.lastname);
+// TWO : objectName["propertyName"]
+console.log(PERSON["firstname"]);
+
+// METHOD IN JS OBJECT, Methods are functions stored as properties in object
+const detail = {
+    lastname : "Warith",
+  firstname : "Ishola",
+  fullName: function() {
+    return (this.firstname + " " + this.lastname).toLocaleUpperCase()
+  },
+  age : 25,
+  skinColor : "BLACK"
+}
+console.log(detail.fullName());
+
+// delete keyword for deleting properties in object
+delete detail.skinColor;
+console.log(detail.skinColor);
+
+// NESTED OBJECTS
+detail.myCars = "BMW"
+console.log(detail);
+detail.myCars = {
+    car1: "BMW",
+    car2: "FORD",
+    car3: "BENZ"
+}
+console.log(detail);
+console.log(detail.myCars.car3);
+
+var name = detail.fullName()
+console.log(name);
+
+// JAVASCRIPT DISPLAY OBJECTS USING 5 DIFFERENT METHODS;
+// 1- DISPLAYING THE PROPERTIES
+document.getElementById("demo1").innerHTML = "I have a " + detail.myCars.car1 + ", a " + detail.myCars.car2 + ", and a " + detail.myCars.car3;
+document.getElementById("demo1").style.color = "red"
+document.getElementById("demo1").style.fontSize = "40px"
+
+// 2- DISPLAYING THE PROPERTIES IN LOOP
+let text = "";
+for (let x in detail) {
+        text += detail[x] + ", " + "<br>";
+} 
+document.getElementById("demo2").innerHTML = text
+document.getElementById("demo2").style.color = "blue"
+document.getElementById("demo2").style.fontSize = "40px"
+
+// 3- USING Object.values(), firstly, create an array
+var myDetail = Object.values(PERSON);
+document.getElementById("demo3").innerHTML = myDetail
+document.getElementById("demo3").style.color = "purple"
+document.getElementById("demo3").style.fontSize = "40px"
+
+// 4- USING object.entries() , this makes it simple to objects in loop.
+var $text = ""
+for(let[properties, value] of Object.entries(person)){
+    $text += properties + ": " + value + "<br>";
+}
+document.getElementById("demo4").innerHTML = $text;
+document.getElementById("demo4").style.color = "yellow"
+document.getElementById("demo4").style.fontSize = "40px"
+
+// 5-USING JSON.stringify()
+  var myperson = JSON.stringify(Person);
+  document.getElementById("demo5").innerHTML = myperson;
+  document.getElementById("demo5").style.color = "gray"
+document.getElementById("demo5").style.fontSize = "40px"
+
+// Object Constructor Functions
+
+function Car(brand, model, year, color,fullName) {
+    this.brand = brand;
+    this.model = model;
+    this.year = year;
+    this.carColor = color;
+    this.fullName = function(){
+      return this.brand + " " + this.model + " " + this.year;
+    };
+  }
+  Car.prototype.carColor = "color";
+  const myToy1 = new Car("Nissan", 1103, 2020)
+  console.log(myToy1);
+  myToy1.carColor = "red"
+  console.log(myToy1);
+ const myToy2 = new Car("Benz", 2296, 2022)
+ myToy2.carColor = "black"  
+ console.log(myToy2);
+ console.log(myToy1.fullName());
+ console.log(myToy2.fullName());
+
+//  Adding a Method to an Object
+// Adding a method to a created object is easy:
+myToy1.changeName = function(name){
+  this.name = name;
+}
+myToy1.changeName("Corrolla");
+console.log(myToy1);
+
+// Adding a Method to a Constructor
+// Adding a new method must be done to the constructor function prototype:
+Car.prototype.addFuel = function(fuel) {
+    this.fuel = fuel;
+  }
+
+  myToy1.addFuel(10);
+  console.log(myToy1);
+
+  //  Removing a Method from an Object
+  // Removing a method from an existing object is done in the same way as adding a method:
+  delete myToy1.changeName;
+  console.log(myToy1);
+
+  // Built-in JavaScript Constructors
+// JavaScript has built-in constructors for all native objects:
+// new Object()   // A new Object object
+// new Array()    // A new Array object
+// new Map()      // A new Map object
+// new Set()      // A new Set object
+// new Date()     // A new Date object
+// new RegExp()   // A new RegExp object
+// new Function() // A new Function object
+
+// Use object literals {} instead of new Object().
+
+// Use array literals [] instead of new Array().
+
+// Use pattern literals /()/ instead of new RegExp().
+
+// Use function expressions () {} instead of new Function().
+
+// JavaScript Events
+// JavaScript lets you execute code when events are detected.
+// HTML allows event handler attributes, with JavaScript code, to be added to HTML elements.
+// With single quotes:
+// <element event='some JavaScript'>
+// With double quotes:
+// <element event="some JavaScript">
+
+function myTime() {
+ return 
+  document.getElementById('demo6').innerHTML = new Date().toLocaleTimeString(),
+  // document.getElementById('demo6').innerHTML = new Date().toLocaleTimeString('en-US', { hour12: false }) // 24-hour time format without AM/PM
+ document.getElementById("demo6").style.color = "aqua",
+  document.getElementById("demo6").style.fontSize = "40px",
+   document.getElementById("demo6").style.fontWeight = "bold"
+ ;
+}
+ myTime()
+ setInterval(myTime, 1000); // This will call myTime() every second.
+
+//  javascript strings
+var newText = "this is \b backspace, \n new line, \f form feed, \r return carriage, \t horizotal tabulator, \v vertical tabulator, \' single qoute, \" double quote, \\ backslash."
+console.log(newText);
+// Javascript Method
+// 1- JavaScript String Length
+// The length property returns the length of a string:
+newText.length
+console.log(newText.length);
+// 2- Extracting String Characters
+// There are 4 methods for extracting string characters:
+// A- JavaScript String at()
+
+newText.at(0)
+console.log(newText.at(0));
+
+console.log(newText.at(-2));
+
+
+// B- JavaScript String charAt()
+
+newText.charAt(1)
+console.log(newText.charAt(1));
+
+// C- JavaScript String charCodeAt()
+// The charCodeAt() method returns the code of the character at a specified index in a string:
+// The method returns a UTF-16 code (an integer between 0 and 65535).
+newText.charCodeAt(2)
+console.log(newText.charCodeAt(2));
+// JavaScript String codePointAt() same as JavaScript String charCodeAt()
+newText.codePointAt(2)
+console.log(newText.codePointAt(2));
+// D- Property Access [ ]
+console.log(newText[1]);
+console.log(newText[newText.length - 1]);
+
+// 2- Extracting String Parts
+// There are 3 methods for extracting a part of a string:
+
+// slice(start, end)
+
+newText.slice(5, 10)
+console.log(newText.slice(5, 10));
+let fruit = "Apple, Banana, Kiwi";
+let part = fruit.slice(7);
+console.log(part);
+
+// substring(start, end)
+// substring() is similar to slice().
+// The difference is that start and end values less than 0 are treated as 0 in substring().
+
+fruit.substring(7)
+console.log(fruit.substring(7, 13));
+newText.substring(5, 10)
+console.log(newText.substring(5, 10));
+
+// substr(start, length)
+// substr() is similar to slice().
+// The difference is that the second parameter specifies the length of the extracted part.
+
+console.log(fruit.substr(7, 6));
+
+console.log(newText.substr(5, 10));
+
+// 3- Converting to Upper and Lower Case
+// A string is converted to upper case with toUpperCase():
+
+let fruitUpperCase = fruit.toUpperCase();
+console.log(fruitUpperCase);
+
+// A string is converted to lower case with toLowerCase():
+
+let fruitLowerCase = fruit.toLowerCase();
+console.log(fruitLowerCase);
+
+//4- JavaScript String concat()
+// concat() joins two or more strings:
+// The concat() method can be used instead of the plus operator.
+let text1 = "Hello";
+let text2 = "World!";
+let newTextConcat = text1.concat(" ",text2);
+console.log(newTextConcat);
+
+//5- JavaScript String trim()
+// The trim() method removes whitespace from both sides of a string:
+
+let text3 = "  Hello World!  ";
+console.log(text3);
+let trimmedText = text3.trim();
+console.log(trimmedText);
+
+// 6- JavaScript String trimStart()
+// The trimStart() method works like trim(), but removes whitespace only from the start of a string.
+
+let text4 = "  Hello World!  ";
+// console.log(text4);
+let trimmedTextStart = text4.trimStart();
+console.log(trimmedTextStart);
+
+// 7- JavaScript String trimEnd()
+
+let text5 = "  Hello World!  ";
+// console.log(text5);
+let trimmedTextEnd = text5.trimEnd();
+console.log(trimmedTextEnd);
+
+//8- JavaScript String padStart()
+// The padStart() method pads a string from the start.
+// It pads a string with another string (multiple times) until it reaches a given length.
+
+let text6 = "Hello";
+let paddedText = text6.padStart(10, "-");
+console.log(paddedText);
+
+//9- JavaScript String padEnd()
+
+let text7 = "Hello";
+let paddedTextEnd = text7.padEnd(10, "-");
+console.log(paddedTextEnd);
+// To pad a number, convert the number to a string first.
+
+let num = 123;
+let paddedNum = num.toString().padStart(10, "0");
+console.log(paddedNum);
+
+// 10- JavaScript String repeat()
+// The repeat() method returns a string with a number of copies of a string.
+// The repeat() method returns a new string.
+// The repeat() method does not change the original string.
+
+let text8 = "Hello ";
+let repeatedText = text8.repeat(3);
+console.log(repeatedText);
+
+// 11- JavaScript String replace()
+// The replace() method replaces a specified value with another value in a string:
+
+let text9 = "Hello World!";
+let replacedText = text9.replace("World", "Universe");
+console.log(replacedText);
+// By default, the replace() method is case sensitive. 
+// To replace case insensitive, use a regular expression with an /i flag (insensitive):
+
+let text10 = "Hello World!";
+let replacedTextCaseInsensitive = text10.replace(/WORLD/i, "UniVerse");
+console.log(replacedTextCaseInsensitive);
+// To replace all matches, use a regular expression with a /g flag (global match):
+
+let text11 = "Hello World! Hello Universe!";
+let replacedTextGlobal = text11.replace(/Hello/g, "Hi");
+console.log(replacedTextGlobal);
+
+// JavaScript String ReplaceAll()
+
+let text12 = "Hello World! Hello Universe!";
+let replacedTextGlobalAll = text12.replaceAll("Hello", "Hi");
+console.log(replacedTextGlobalAll);
+
+// The replaceAll() method allows you to specify a regular expression instead of a string to be replaced.
+// If the parameter is a regular expression, the global flag (g) must be set, otherwise a TypeError is thrown.
+text = text.replaceAll(/Cats/g,"Dogs");
+text = text.replaceAll(/cats/g,"dogs");
+
+// Converting a String to an Array
+// JavaScript String split()
+// A string can be converted to an array with the split() method:
+
+let text13 = "Hello, World!";
+let words = text13.split(", ");
+console.log(words);
+
+// 12- JavaScript String search() methods:
+// A- JavaScript String indexOf()
+
+let text14 = "Hello World!";
+let position = text14.indexOf("World");
+console.log(position);
+
+// B- JavaScript String lastIndexOf()
+
+let text15 = "Hello World! Hello Universe!";
+let lastPosition = text15.lastIndexOf("Hello");
+console.log(lastPosition);
+
+// C- JavaScript String search()
+
+let text16 = "Hello World!";
+let searchText = "World";
+let searchPosition = text16.search(searchText);
+console.log(searchPosition);
+
+// 13- JavaScript String match()
+
+let text17 = "Hello World!";
+let matchResult = text17.match("World");
+console.log(matchResult);
+
+// D- JavaScript String matchAll()
+
+let text18 = "Hello World! Hello Universe!";
+let matchAllResult = text18.matchAll(/Hello/g);
+console.log([...matchAllResult]);
+
+// 14- JavaScript String includes()
+
+let text19 = "Hello World!, the universe is beautiful";
+console.log(text19.includes("World"));
+// Check if a string includes "world". Start at position 12:
+
+console.log(text19.includes("World", 12));
+
+// 15- JavaScript String startsWith()
+
+let text20 = "Hello World!";
+console.log(text20.startsWith("Hello"));
+// A start position for the search can be specified:
+
+console.log(text20.startsWith("Hello", 5));
+
+// 16- JavaScript String endsWith()
+
+let text21 = "Hello World!";
+console.log(text21.endsWith("World!"));
+
+// A end position for the search can be specified:
+
+console.log(text21.endsWith("World!", 5));
+
+
+// JavaScript Strings as Objects
+//  strings can also be defined as objects with the keyword new:
+let stringsObject = new String();
+
+// HTML Template Strings
+
+// let header = "Template Strings";
+// let tags = ["template strings", "javascript", "es6"];
+
+// let html = `<h2>${header}</h2><ul>`;
+
+// for (const x of tags) {
+//   html += `<li>${x}</li>`;
+// }
+// html += `</ul>`;
+// document.getElementById("demo7").innerHTML = html;
+
+// JavaScript Number Methods
+// 1- toString() Method : returns a number as a string.
+let number = 123;
+number = number.toString();
+console.log(typeof(number));
+
+let number1 = 123;
+let stringNumber = number1.toString();
+console.log(typeof(stringNumber));
+
+// 2- toFixed() Method : returns a string representing the number with a specified number of decimal places.
+
+let number2 = 123.456;
+let fixedNumber = number2.toFixed(2);
+console.log(fixedNumber);
+
+// 3- toExponential() Method : returns a string representing the number in exponential notation.
+
+let number3 = 123.4567;
+let exponentialNumber = number3.toExponential(5);
+console.log(exponentialNumber);
+
+// 4- toPrecision() Method : returns a string representing the number to a specified number of significant digits.
+
+let number4 = 123.4567;
+let precisionNumber = number4.toPrecision(5);
+console.log(precisionNumber);
+
+// 5- valueOf() Method : returns a number as a number.
+
+let number5 = 123;
+let valueOfNumber = number5.valueOf();
+console.log(typeof(valueOfNumber));
+
+// Number() method can be used to convert JavaScript variables to numbers:
+
+let myVar = "123";
+let number6 = Number(myVar);
+console.log(typeof(number6));
+
+// 6- parseInt() Method : parses a string argument and returns an integer of the specified radix.
+
+let number7 = "123.444444";
+let parsedNumber = parseInt(number7);
+console.log(parsedNumber);
+
+// 7- parseFloat() Method : parses a string argument and returns a floating-point number.
+
+let number8 = "123 444 444";
+let parsedFloat = parseFloat(number8);
+console.log(parsedFloat);
+
+// Number Object Methods
+// These object methods belong to the Number object:
+// Method	Description
+// Number.isInteger()	Returns true if the argument is an integer
+
+let number9 = 123;
+console.log(Number.isInteger(number9));
+// Number.isSafeInteger()	Returns true if the argument is a safe integer
+
+let number10 = 123577899000233304040494455;
+console.log(Number.isSafeInteger(number10));
+// Number.parseFloat()	Converts a string to a number
+
+let number11 = "1.23 456";
+console.log(Number.parseFloat(number11));
+// Number.parseInt()	Converts a string to a whole number
+
+let number12 = "123.456";
+console.log(Number.parseInt(number12));
+
+// JavaScript Number Properties
+// Property	Description
+// EPSILON	The difference between 1 and the smallest number > 1.
+// MAX_VALUE	The largest number possible in JavaScript
+// MIN_VALUE	The smallest number possible in JavaScript
+// MAX_SAFE_INTEGER	The maximum safe integer (253 - 1)
+// MIN_SAFE_INTEGER	The minimum safe integer -(253 - 1)
+// POSITIVE_INFINITY	Infinity (returned on overflow)
+// NEGATIVE_INFINITY	Negative infinity (returned on overflow)
+// NaN	A "Not-a-Number" value
+
+// JavaScipt Arrays:
+// using array literal's method
+const cars = ["volvo", "BMW", "Golf"]
+var students = []
+students[0] = "garb"
+students[1] = "rilex"
+students[2] = "raj"
+// using new keyword to create arrays
+const Cars = new Array("volvo", "BMW", "Golf")
+console.log(cars);
+console.log(Cars);
+console.log(students);
+// Accessing Array Elements
+// You access an array element by referring to the index number:
+console.log(cars[0]);
+console.log(Cars[1]);
+console.log(students[0]);
+// Changing an Array Element
+// This statement changes the value of the first element in cars:
+cars[0] = "Opel";
+console.log(cars);
+// Converting an Array to a String
+// The JavaScript method toString() converts an array to a string of (comma separated) array values.
+
+let cars1 = ["Volvo", "BMW", "Golf"];
+let carsString = cars1.toString();
+console.log(carsString);
+// Arrays are Objects
+
+let myArray = ["apple", "banana", "cherry"];
+console.log(typeof(myArray));
+
+// Array Elements Can Be Objects
+// JavaScript variables can be objects. Arrays are special kinds of objects.
+// Because of this, you can have variables of different types in the same Array.
+// You can have objects in an Array. You can have functions in an Array. You can have arrays in an Array:
+function myFunction(){
+  return "Hello from a function";
+}
+myArray[0] = Date.now;
+myArray[1] = myFunction();
+myArray[2] = myToy1;
+console.log(myArray);
+
+// Array Properties and Methods
+// The length Property
+// The length property of an array returns the length of an array (the number of array elements).
+
+let myArray1 = ["apple", "banana", "cherry"];
+console.log(myArray1.length);
+// Accessing the First Array Element
+
+console.log(myArray1[0]);
+// Accessing the Last Array Element
+
+console.log(myArray1[myArray1.length - 1]);
+// Looping Array Elements
+// One way to loop through an array, is using a for loop:
+
+let myArray2 = ["apple", "banana", "cherry", "nuts", "berry"];
+for (let i = 0; i < myArray2.length; i++) {
+  console.log(myArray2[i]);
+}
+// You can also use the Array.forEach() function to loop array elements:
+
+let myArray3 = ["apple", "banana", "cherry", "nuts", "berry"];
+myArray3.forEach(myElement)
+  function myElement(element) {
+  console.log(element);
+};
+// Adding Elements to an Array
+// The easiest way to add a new element to an array is using the push() method:
+let myArray4 = ["apple", "banana", "cherry"];
+myArray4.push("orange");
+console.log(myArray4);
+// New element can also be added to an array using the length property:
+
+let myArray5 = ["apple", "banana", "cherry"];
+myArray5[myArray5.length] = "orange";
+console.log(myArray5);
+
+// concat method
+
+let array1 = ["a", "b", "c"];
+let array2 = ["d", "e", "f"];
+let array3 = array1.concat(array2);
+console.log(array3);
+// copyWithin() method copies array elements to another position in an array:
+
+let array4 = ["a", "b", "c", "d", "e", "f"];
+let array5 = array4.copyWithin(0, 3);
+console.log(array5);
+
+// flat() method creates a new array with sub-array elements concatenated to a specified depth.
+
+let array6 = [1, 2, [3, 4], [5, 6], 7];
+let array7 = array6.flat();
+console.log(array7);
+
+// splice() method adds/removes items to/from an array, and returns the removed item(s).
+
+let array8 = [1, 2, 3, 4, 5];
+let removedItem = array8.splice(0, 3);
+console.log(array8);
+console.log(removedItem);
+
+// slice() method returns a shallow copy of a portion of an array into a new array object.
+
+let array9 = [1, 2, 3, 4, 5];
+let newArray = array9.slice(0, 3);
+console.log(newArray);
+
+// sort() method sorts the elements of an array in place and returns the array.
+
+let arrayNum = [1, 120, 1000, 10, 20];
+arrayNum.sort(function(a,b){
+  return a - b;
+});
+console.log(arrayNum);
+
+
+
+let array10 = ["g", "e", "d", "c", "b", "a"];
+array10.sort();
+console.log(array10);
+
+// The Compare Function
+const points = [40, 100, 1, 5, 25, 10];
+document.getElementById("demo").innerHTML = points;
+
+function myFunction1() {
+  points.sort();
+  document.getElementById("demo").innerHTML = points;
+}
+
+function myFunction2() {
+  points.sort(function(a, b){return a - b});
+  document.getElementById("demo").innerHTML = points;
+}
+
+// Sorting an Array in Random Order
+
+const points1 = [40, 100, 1, 5, 25, 10];
+points1.sort(() => Math.random() - 0.5);
+console.log(points1);
+
+// The Fisher Yates Method
+
+function shuffle(array) {
+  let currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0!== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+console.log(shuffle(points1));
+
+
+
+
+
+
+
+// Append
+// const list = document.querySelector("ul");
+// let li = document.createElement("li");
+// li.innerHTML = "Item Three";
+// list.appendChild(li)
+// let last = list.lastElementChild;
+// let li = last.cloneNode(true);
+// li.querySelector("div.desc").innerHTML = "This is Item 3 description";
+// list.insertBefore(li, last)
+// list.replaceChild(li, last)
+
+
+   </script> 
+   
+
+
+</body>
+</html>

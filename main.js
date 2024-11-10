@@ -193,18 +193,18 @@ var objects = {
 console.log(objects.hobbies[1],objects.age);
 
 // date
-const date = new Date()
+// const date = new Date()
 
-console.log(date);
+// console.log(date);
 
-var seconds = date.getSeconds()
-var minute = date.getMinutes()
-var hours = date.getHours()
-console.log(`${hours} : ${minute} : ${seconds}`);
-console.log(hours + ':' + minute + ':' + seconds);
+// var seconds = date.getSeconds()
+// var minute = date.getMinutes()
+// var hours = date.getHours()
+// console.log(`${hours} : ${minute} : ${seconds}`);
+// console.log(hours + ':' + minute + ':' + seconds);
 
-var year = date.getFullYear()
-console.log(year);
+// var year = date.getFullYear()
+// console.log(year);
 
 // conditionals
 // if and else, switch operators
@@ -278,50 +278,264 @@ console.log(year);
 // }
 
 // Assignment one
-var temperature = prompt("What is the temperature in your area")
-if(temperature < 0){
-    alert("It's freezing!");
-}else if(temperature >= 0 && temperature <= 15){
-    alert("It's cold!");
-}else if(temperature >= 16 && temperature <= 25){
-      alert("It's warm!");
-}else{
-    alert("It's hot!");
-}
+// var temperature = prompt("What is the temperature in your area")
+// if(temperature < 0){
+//     alert("It's freezing!");
+// }else if(temperature >= 0 && temperature <= 15){
+//     alert("It's cold!");
+// }else if(temperature >= 16 && temperature <= 25){
+//       alert("It's warm!");
+// }else{
+//     alert("It's hot!");
+// }
 
 // Assignment two
-let number = prompt("Input a number")
-if(number % 2 == 0){
-    alert("Even");
-}else{
-    alert("Odd");
+// let number = prompt("Input a number")
+// if(number % 2 == 0){
+//     alert("Even");
+// }else{
+//     alert("Odd");
     
-}
+// }
 
 // Assignment three
-var username = prompt("enter your username")
-var password = prompt("enter your 11 digit password")
+// var username = prompt("enter your username")
+// var password = prompt("enter your 11 digit password")
 
-if(username === "admin" && password === "password123"){
-    alert("Login Successful!")
-}else if(password !== "password123" && username === "admin"){
-    alert("incorrect password")
-}else if(username !== "admin" && password === "password123"){
-    alert("incorrect username")
-}else{
-    alert("Login failed! invalid credentials.")
+// if(username === "admin" && password === "password123"){
+//     alert("Login Successful!")
+// }else if(password !== "password123" && username === "admin"){
+//     alert("incorrect password")
+// }else if(username !== "admin" && password === "password123"){
+//     alert("incorrect username")
+// }else{
+//     alert("Login failed! invalid credentials.")
+// }
+
+// var userName = "bello"
+// var passkey = "akin2000"
+
+// var inputuser = prompt("enter your username")
+// var inputpass = prompt("enter your password")
+
+// if(inputuser.trim().toLowerCase() == userName && inputpass.trim().toLowerCase() == passkey){
+//     alert("login sucessful!")
+// }else if(inputpass.length[8] !== passkey){
+//     alert("password must be 8 digit")
+// }
+// else{
+//     alert("invalid credentials")
+// }
+
+// password validation
+// var passcode = prompt("enter password")
+
+// if(passcode.length <= 8){
+//     alert('password must be more than 8 characters')
+// }
+// else if(!passcode.includes('@')){
+//     alert('password must have @')
+// }
+
+// regex
+// minimum eight characters, at least one letter, one number and one special character
+
+// var dayofweek = prompt('enter day of the week')
+
+// switch (dayofweek) {
+//     case 'friday':
+//         alert('TGIF');
+//         break;
+//     case 'monday':
+//         alert('monday blessing');
+//         break;
+//     case 'tuesday':
+//         alert('its tuesday');
+//         break;   
+//     default:
+//         alert('does of week does not exist');
+//         break;
+// }
+
+// loop
+for(number =1; number <= 10; number++){
+    console.log('hello world' + number);
+if(number == 6){
+    break
+}    
+}
+// for(number =1; number <= 10; number++){
+// if(number == 6){
+//     continue
+// }  
+// console.log('hello world' + number);  
+// }
+
+// print numbers divisible by 5 and 7 between 1500 to 3600
+// for(num = 1500; num <= 3600; num++){
+//     if (num % 5 === 0 && num % 7 === 0) {
+//        if (num == 1750) {
+//         continue;
+//        } 
+//     }
+//     console.log(num);
+// }
+
+var array = ['jibola','quadri','rilex']
+for(num = 0; num < array.length; num++){
+    console.log(array[num] + '@gmail.com');
 }
 
+// var figure = 1
+// while (figure < 10) {
+    // console.log('hello world');
+    // figure++
+// }
+
+// numbers divisible by 5 in 1 to 100
+var fig = 1
+while (fig <= 100) {
+    if(fig%5 == 0){
+        console.log(fig)
+    }
+  fig++  
+}
+
+// functions 
+// function is a block of code that runs when you call it
+function greet() {
+    console.log("hello everyone");
+}
+greet()
+
+function hello(user) {
+    console.log(`hello ${user}`);
+}
+hello("akin")
+// takes 2 number2
+// function add(num,num2) {
+//     console.log(num + num2);
+// }
+// add(3,4)
+
+function add(num,num2) {
+   return(
+    num + num2
+   )
+}
+console.log(add(3,4));
+// var year1 = prompt("enter year of birth")
+// var year2 =2024
+// function age(year1,year2) {
+//     return(
+//         year2 - year1
+//     )
+// }
+// console.log(age(2024,2000));
+
+function calcYear(userYear) {
+    var currentYear = new Date().getFullYear()
+    return(
+        `you are ${currentYear - userYear} year's old`
+    )
+}
+console.log(calcYear(2015));
+
+// 0 degrees celcius equals to 32 degrees fahrenheit
+// (celcius * 9/5) + 32
+function convertDegree(celciusNumber) {
+    return(
+        (celciusNumber * 9/5) + 32
+    )
+}
+console.log(convertDegree(12));
+
+// function degrees(convertedTemp) {
+//     var celcius = 0
+//     var fahrenheit = 32
+//     return(
+//         celcius + fahrenheit
+//     )
+// }
+// console.log(degrees());
+
+// DOM Document Object Model
+
+var text = document.getElementById('text')
+var text1 = document.getElementsByTagName("h2")
+var text2 = document.getElementsByClassName("text3")
+var all_text = document.querySelector(".text3")
+// var all = document.querySelectorAll()
+
+text.innerHTML = "hello world"
+console.log(text);
+text.style.color = "red"
+all_text.textContent = "hello world"
+console.log(all_text);
+
+var btn = document.querySelector("button")
+var body = document.querySelector(".body")
+
+btn.addEventListener('click',function()
+   {
+    body.style.backgroundColor = "black"
+    text.style.color = "green"
+   }
+)
+// display current date on your html on click of the first icon it change to darkmode
+// and on click of another icon it changes to lightmode
+// auto darkmode
+
+// accordion
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+// current time
 
 
 
+function displayTime() {
+    var currentTime = new Date();
+var hours = currentTime.getHours();
+var minutes = currentTime.getMinutes();
+var seconds = currentTime.getSeconds();
+hours = hours < 10 ? '0' + hours : hours;
+minutes = minutes < 10 ? '0' + minutes : minutes;
+seconds = seconds < 10 ? '0' + seconds : seconds;
+var timeString =  hours + ":" + minutes + ":" + seconds;
 
+    document.getElementById("time").innerText = timeString;
+}
+// displayTime()
+setInterval(displayTime, 1000);
 
+var moon = document.querySelector(".fa-moon")
+var sun = document.querySelector(".fa-sun")
+var body = document.querySelector(".body")
 
-
-
-
-
+moon.addEventListener('click',function()
+   {
+    body.style.backgroundColor = "black"
+   }
+)
+sun.addEventListener('click',function()
+   {
+    body.style.backgroundColor = "white"
+   }
+)
 
 
 
